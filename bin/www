@@ -12,9 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
- // changed to port 9000 to allow api and client to run concurrently
-// var port = normalizePort(process.env.PORT || '3000');
-var port = normalizePort(process.env.PORT || '9000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**

@@ -15,7 +15,7 @@ const getLocation = (lat, lon, callback) => {
     })
     .catch((err) => {
       console.log(err);
-      callback({});
+      callback(null);
     })
     .finally((res) => {
       callback(res);
