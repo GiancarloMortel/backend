@@ -7,14 +7,14 @@ const ctrlCity = require('./city');
 const cityList = async (req, res) => {
   const cities = await ctrlCity.getCityPromise(req.params.city, 'US');
 
-  if (cities) {
-    res
-      .status(200)
-      .json(cities);
-  } else {
+  if (cities === -1) {
     res
       .status(404)
       .json({message: 'no cities found'});
+  } else {
+    res
+      .status(200)
+      .json(cities);
   }
 };
 
@@ -22,14 +22,14 @@ const cityList = async (req, res) => {
 const weatherDay = async (req, res) => {
   const weather = await ctrlWeather.weatherPromise(req.params.cityid);
 
-  if (weather) {
-    res
-      .status(200)
-      .json(weather);
-  } else {
+  if (weather === -1) {
     res
       .status(404)
       .json({message: 'error in getting weather'});
+  } else {
+    res
+      .status(200)
+      .json(weather);
   }
 };
 

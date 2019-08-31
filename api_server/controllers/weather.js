@@ -13,8 +13,7 @@ const getWeather = (id, callback) => {
       callback(res);
     })
     .catch((err) => {
-      console.log(err);
-      callback();
+      callback(-1);
     })
     .finally((res) => {
       callback(res);

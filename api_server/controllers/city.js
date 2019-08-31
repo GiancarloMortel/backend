@@ -33,8 +33,7 @@ const getCityListUpdateState = (cityName, countryName, callback) => {
     })
     .exec(async (err, cities) => {
       if (err) {
-        console.log(err);
-        callback(null);
+        callback(-1);
       }
       else {
         // insert state if not in database
@@ -59,7 +58,7 @@ const getCityListUpdateState = (cityName, countryName, callback) => {
         if (list.length > 0) {
           callback(list);
         } else {
-          callback(null);
+          callback(-1);
         }
       }
     });
