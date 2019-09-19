@@ -24,20 +24,6 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// add headers
-app.use((req, res, next) => {
-  // website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
-
-  // request methods to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // request headers to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  next();
-});
-
 app.use('/', apiRouter);
 
 // catch 404 and forward to error handler
