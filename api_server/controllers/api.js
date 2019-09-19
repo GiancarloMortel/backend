@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const ctrlWeather = require('./weather');
 const ctrlCity = require('./city');
+const ctrlStock = require('./stock');
 
 // get list of cities
 const cityList = async (req, res) => {
@@ -33,7 +34,23 @@ const weatherDay = async (req, res) => {
   }
 };
 
+// gets daily stock information for a company
+const stockInfo = async (req, res) => {
+  const stock = await ctrlStock.stockPromise(req.params.ticker);
+
+  if (stock === -1) {
+    res
+      .status(404)
+      .json({message: 'error in getting stock'});
+  } else {
+    res
+      .status(200)
+      .json(stock);
+  }
+};
+
 module.exports = {
   cityList,
-  weatherDay
+  weatherDay,
+  stockInfo
 };
